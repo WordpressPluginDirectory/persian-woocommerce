@@ -469,7 +469,7 @@ class Persian_Woocommerce_Tools extends Persian_Woocommerce_Core {
 					'title'   => 'بررسی صحت تلفن همراه',
 					'id'      => 'PW_Options[phone_validation]',
 					'type'    => 'checkbox',
-					'default' => 'no',
+					'default' => 'yes',
 					'desc'    => 'برای بررسی صحت تلفن همراه و یازده رقمی بودن آن تیک بزنید.',
 				],
 				[
@@ -613,10 +613,8 @@ class Persian_Woocommerce_Tools extends Persian_Woocommerce_Core {
 			        data-placeholder="استان (ها) مورد نظر خود را انتخاب کنید ..." title="استان"
 			        class="wc-enhanced-select">
 				<?php
-				if ( ! empty( PW()->address->states ) ) {
-					foreach ( PW()->address->states as $key => $val ) {
-						echo '<option value="' . esc_attr( $key ) . '" ' . selected( in_array( $key, $selections ), true, false ) . '>' . esc_attr( $val ) . '</option>';
-					}
+				foreach ( Persian_Woocommerce_Address::$states as $key => $val ) {
+					echo '<option value="' . esc_attr( $key ) . '" ' . selected( in_array( $key, $selections ), true, false ) . '>' . esc_attr( $val ) . '</option>';
 				}
 				?>
 			</select> <br/><a class="select_all button" href="#">انتخاب همه</a> <a
